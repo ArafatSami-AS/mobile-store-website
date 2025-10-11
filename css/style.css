@@ -1,0 +1,247 @@
+/* --- General Styles & Variables --- */
+:root {
+    --primary-color: #007bff; /* A nice blue for accents */
+    --secondary-color: #2a3a4b; /* Dark blue for footer */
+    --background-light: #f8f9fa;
+    --text-dark: #343a40;
+    --card-border-color: #dee2e6;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+a:hover {
+    color: #0056b3;
+}
+
+main {
+    min-height: 70vh;
+}
+
+/* --- Header & Navbar --- */
+.header-main {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+}
+
+.search-container {
+    width: 50%;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-color);
+}
+
+.navbar-nav .nav-link i {
+    font-size: 1.2rem;
+}
+
+.badge {
+    font-size: 0.6em;
+    vertical-align: top;
+    margin-left: -5px;
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    height: 60vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1604835099419-56320194389a?q=80&w=2070');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+}
+.hero-subtitle {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+.hero-description {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1rem auto;
+}
+
+/* --- Category Section --- */
+.brand-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 15px;
+    border: 1px solid var(--card-border-color);
+    border-radius: 8px;
+    background-color: #fff;
+    color: var(--text-dark);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.brand-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    color: var(--primary-color);
+}
+.brand-link img {
+    width: 48px;
+    height: 48px;
+}
+
+/* --- Product Card --- */
+.product-card {
+    border: 1px solid var(--card-border-color);
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+.product-card img {
+    height: 200px;
+    object-fit: contain;
+    padding: 1rem;
+}
+.product-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    height: 40px; /* Ensures consistent title height */
+    overflow: hidden;
+}
+.product-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+.product-card .btn-dark {
+    background-color: var(--text-dark);
+    border: none;
+}
+.wishlist-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ccc;
+}
+.wishlist-icon.active {
+    color: red;
+}
+
+
+/* --- Product Details Page --- */
+#product-detail-container .spec-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+#product-detail-container .spec-box {
+    border: 1px solid #e0e0e0;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: var(--background-light);
+}
+
+/* --- Cart Page --- */
+.cart-item-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--card-border-color);
+    padding: 1rem;
+    border-radius: 8px;
+}
+.cart-item-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-right: 1.5rem;
+}
+.quantity-selector {
+    display: flex;
+    align-items: center;
+}
+.quantity-selector button {
+    border: 1px solid var(--card-border-color);
+    background: white;
+    width: 30px;
+    height: 30px;
+}
+.quantity-selector input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid var(--card-border-color);
+    height: 30px;
+}
+.remove-btn {
+    font-size: 1.5rem;
+    color: #dc3545;
+    cursor: pointer;
+}
+
+
+/* --- Auth Pages (Login/Signup) --- */
+.auth-body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+.auth-card {
+    border: none;
+    border-radius: 15px;
+}
+.auth-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+/* --- Footer --- */
+.footer-main {
+    background-color: var(--secondary-color);
+}
+.footer-main a {
+    text-decoration: none;
+}
+.footer-main a:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .search-container {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}
