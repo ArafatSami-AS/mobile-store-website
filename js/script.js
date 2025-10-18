@@ -172,111 +172,110 @@ document.addEventListener('DOMContentLoaded', () => {
         productCountEl.textContent = `Showing ${productsToDisplay.length} products`;
     };
 
-    
+    // PRODUCT DETAILS PAGE LOGIC
+    const initProductDetailsPage = async () => {
+        const products = await fetchProducts();
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const product = products.find(p => p.id.toString() === productId);
 
-   //PRODUCT DETAILS PAGE LOGIC
-const initProductDetailsPage = async () => {
-    const products = await fetchProducts();
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-    const product = products.find(p => p.id.toString() === productId);
+        if (product) {
+            // --- NEW: Find all variants with the same name ---
+            const variants = products
+                .filter(p => p.name === product.name)
+                .sort((a, b) => a.price - b.price); // Sort variants by price
 
-    if (product) {
-        //Find all variants with the same name
-        const variants = products
-            .filter(p => p.name === product.name)
-            .sort((a, b) => a.price - b.price); // Sort variants by price
-
-        const container = document.getElementById('product-detail-container');
-        const breadcrumbContainer = document.getElementById('breadcrumb-container');
-        
-        document.title = `${product.name} - PAASD Mobiles`;
-
-        breadcrumbContainer.innerHTML = `
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="products.html?brand=${product.brand}">${product.brand}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">${product.name}</li>
-            </ol>`;
+            const container = document.getElementById('product-detail-container');
+            const breadcrumbContainer = document.getElementById('breadcrumb-container');
             
-        // HTML structure with IDs for dynamic updates and variant buttons ---
-        container.querySelector('.row').innerHTML = `
-            <div class="col-md-5">
-                <img src="${product.image}" class="img-fluid rounded" alt="${product.name}">
-            </div>
-            <div class="col-md-7">
-                <h2>${product.name}</h2>
-                <h3 class="text-primary my-3" id="product-price">₹${product.price.toLocaleString('en-IN')}</h3>
+            document.title = `${product.name} - PAASD Mobiles`;
+
+            breadcrumbContainer.innerHTML = `
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="products.html?brand=${product.brand}">${product.brand}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">${product.name}</li>
+                </ol>`;
                 
-                <div class="mb-3">
-                    <strong>Storage / RAM:</strong>
-                    <div id="variant-buttons" class="d-flex flex-wrap gap-2 mt-2">
-                        ${variants.map(v => `
-                            <button class="btn variant-btn ${v.id === product.id ? 'active' : ''}" 
-                                data-product-id="${v.id}"
-                                data-price="${v.price}"
-                                data-ram="${v.ram}"
-                                data-rom="${v.rom}">
-                                ${v.rom} / ${v.ram}
-                            </button>
-                        `).join('')}
-                    </div>
+            // --- MODIFIED: HTML structure with IDs for dynamic updates and variant buttons ---
+            container.querySelector('.row').innerHTML = `
+                <div class="col-md-5">
+                    <img src="${product.image}" class="img-fluid rounded" alt="${product.name}">
                 </div>
-                
-                <p>A flagship device from ${product.brand} offering top-of-the-line performance and a premium experience.</p>
-                
-                <div class="row text-center my-4">
-                    <div class="col-4 spec-box">
-                        <i class="fas fa-camera spec-icon"></i>
-                        <div id="product-camera">${product.camera || 'N/A'}</div>
-                        <small class="text-muted">Camera</small>
+                <div class="col-md-7">
+                    <h2>${product.name}</h2>
+                    <h3 class="text-primary my-3" id="product-price">₹${product.price.toLocaleString('en-IN')}</h3>
+                    
+                    <div class="mb-3">
+                        <strong>Storage / RAM:</strong>
+                        <div id="variant-buttons" class="d-flex flex-wrap gap-2 mt-2">
+                            ${variants.map(v => `
+                                <button class="btn variant-btn ${v.id === product.id ? 'active' : ''}" 
+                                    data-product-id="${v.id}"
+                                    data-price="${v.price}"
+                                    data-ram="${v.ram}"
+                                    data-rom="${v.rom}">
+                                    ${v.rom} / ${v.ram}
+                                </button>
+                            `).join('')}
+                        </div>
                     </div>
-                    <div class="col-4 spec-box">
-                        <i class="fas fa-microchip spec-icon"></i>
-                        <div id="product-processor">${product.processor || 'N/A'}</div>
-                        <small class="text-muted">Processor</small>
+                    
+                    <p>A flagship device from ${product.brand} offering top-of-the-line performance and a premium experience.</p>
+                    
+                    <div class="row text-center my-4">
+                        <div class="col-4 spec-box">
+                            <i class="fas fa-camera spec-icon"></i>
+                            <div id="product-camera">${product.camera || 'N/A'}</div>
+                            <small class="text-muted">Camera</small>
+                        </div>
+                        <div class="col-4 spec-box">
+                            <i class="fas fa-microchip spec-icon"></i>
+                            <div id="product-processor">${product.processor || 'N/A'}</div>
+                            <small class="text-muted">Processor</small>
+                        </div>
+                        <div class="col-4 spec-box">
+                            <i class="fas fa-memory spec-icon"></i>
+                            <div id="product-ram-rom">${product.ram || 'N/A'} / ${product.rom || 'N/A'}</div>
+                            <small class="text-muted">Memory</small>
+                        </div>
                     </div>
-                    <div class="col-4 spec-box">
-                        <i class="fas fa-memory spec-icon"></i>
-                        <div id="product-ram-rom">${product.ram || 'N/A'} / ${product.rom || 'N/A'}</div>
-                        <small class="text-muted">Memory</small>
+                    
+                    <div class="d-flex gap-2">
+                        <button id="add-to-cart-main" class="btn btn-dark btn-lg flex-grow-1 add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>
+                        <button id="wishlist-btn-main" class="btn btn-outline-danger btn-lg wishlist-icon-details" data-product-id="${product.id}"><i class="fas fa-heart"></i></button>
                     </div>
-                </div>
+                </div>`;
                 
-                <div class="d-flex gap-2">
-                    <button id="add-to-cart-main" class="btn btn-dark btn-lg flex-grow-1 add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>
-                    <button id="wishlist-btn-main" class="btn btn-outline-danger btn-lg wishlist-icon-details" data-product-id="${product.id}"><i class="fas fa-heart"></i></button>
-                </div>
-            </div>`;
-            
-        // Event listener for variant buttons ---
-        const variantButtonsContainer = document.getElementById('variant-buttons');
-        variantButtonsContainer.addEventListener('click', (e) => {
-            const button = e.target.closest('.variant-btn');
-            if (!button) return;
+            // --- NEW: Event listener for variant buttons ---
+            const variantButtonsContainer = document.getElementById('variant-buttons');
+            variantButtonsContainer.addEventListener('click', (e) => {
+                const button = e.target.closest('.variant-btn');
+                if (!button) return;
 
-            // Remove active class from all buttons
-            variantButtonsContainer.querySelectorAll('.variant-btn').forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
+                // Remove active class from all buttons
+                variantButtonsContainer.querySelectorAll('.variant-btn').forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
 
-            // Update page content with data from the clicked variant button
-            const newPrice = parseFloat(button.dataset.price);
-            document.getElementById('product-price').textContent = `₹${newPrice.toLocaleString('en-IN')}`;
-            document.getElementById('product-ram-rom').textContent = `${button.dataset.ram} / ${button.dataset.rom}`;
-            
-            // Update the main action buttons to target the new variant ID
-            const newProductId = button.dataset.productId;
-            document.getElementById('add-to-cart-main').dataset.productId = newProductId;
-            document.getElementById('wishlist-btn-main').dataset.productId = newProductId;
-        });
-            
-        // Related Products logic (remains the same)
-        const relatedProductsContainer = document.getElementById('related-products-container');
-        const relatedProducts = products.filter(p => p.brand === product.brand && p.id !== product.id).slice(0, 4);
-        relatedProductsContainer.innerHTML = relatedProducts.map(p => createProductCard(p)).join('');
-    }
-};
+                // Update page content with data from the clicked variant button
+                const newPrice = parseFloat(button.dataset.price);
+                document.getElementById('product-price').textContent = `₹${newPrice.toLocaleString('en-IN')}`;
+                document.getElementById('product-ram-rom').textContent = `${button.dataset.ram} / ${button.dataset.rom}`;
+                
+                // Update the main action buttons to target the new variant ID
+                const newProductId = button.dataset.productId;
+                document.getElementById('add-to-cart-main').dataset.productId = newProductId;
+                document.getElementById('wishlist-btn-main').dataset.productId = newProductId;
+            });
+                
+            // Related Products logic (remains the same)
+            const relatedProductsContainer = document.getElementById('related-products-container');
+            const relatedProducts = products.filter(p => p.brand === product.brand && p.id !== product.id).slice(0, 4);
+            relatedProductsContainer.innerHTML = relatedProducts.map(p => createProductCard(p)).join('');
+        }
+    };
+
     // CART PAGE LOGIC
     const initCartPage = async () => {
         const products = await fetchProducts();
@@ -327,8 +326,8 @@ const initProductDetailsPage = async () => {
     };
 
     const updateCartSummary = (subtotal) => {
-        const tax = subtotal * 0.18;
-        const shipping = subtotal > 0 ? 50 : 0;
+        const tax = subtotal * 0.18; // Example 18% tax
+        const shipping = subtotal > 0 ? 50 : 0; // Example shipping fee
         const total = subtotal + tax + shipping;
 
         document.getElementById('summary-subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
@@ -367,6 +366,101 @@ const initProductDetailsPage = async () => {
         }
     };
     
+    // === NEW SIGNUP PAGE FUNCTION ===
+    const initSignupPage = () => {
+        const signupForm = document.getElementById('signup-form');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const strengthBar = document.getElementById('password-strength-bar');
+        const strengthText = document.getElementById('password-strength-text');
+        const matchMessage = document.getElementById('password-match-message');
+
+        // Function to check password strength
+        const checkPasswordStrength = (password) => {
+            let strength = 0;
+            if (password.length > 7) strength++; // Greater than 7 chars
+            if (password.match(/[a-z]/)) strength++; // Contains lowercase
+            if (password.match(/[A-Z]/)) strength++; // Contains uppercase
+            if (password.match(/[0-9]/)) strength++; // Contains number
+            if (password.match(/[^a-zA-Z0-9]/)) strength++; // Contains special char
+
+            let width = (strength / 5) * 100;
+            let color = 'bg-danger'; // Weak
+            let text = 'Weak';
+            
+            if (strength <= 2) {
+                width = Math.max(width, 10); // Show a minimum bar
+            } else if (strength === 3) {
+                color = 'bg-warning';
+                text = 'Medium';
+            } else if (strength >= 4) {
+                color = 'bg-success';
+                text = 'Strong';
+            }
+            
+            strengthBar.style.width = width + '%';
+            strengthBar.className = `progress-bar ${color}`;
+            strengthText.textContent = password.length > 0 ? text : '';
+        };
+
+        // Function to check if passwords match
+        const checkPasswordMatch = () => {
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            
+            if (confirmPassword.length === 0) {
+                matchMessage.textContent = '';
+                confirmPasswordInput.classList.remove('is-invalid', 'is-valid');
+                return;
+            }
+
+            if (password === confirmPassword) {
+                matchMessage.textContent = 'Passwords match!';
+                matchMessage.classList.add('text-success');
+                matchMessage.classList.remove('text-danger');
+                confirmPasswordInput.classList.add('is-valid');
+                confirmPasswordInput.classList.remove('is-invalid');
+            } else {
+                matchMessage.textContent = 'Passwords do not match.';
+                matchMessage.classList.add('text-danger');
+                matchMessage.classList.remove('text-success');
+                confirmPasswordInput.classList.add('is-invalid');
+                confirmPasswordInput.classList.remove('is-valid');
+            }
+        };
+
+        // Add event listeners for real-time feedback
+        if(passwordInput) {
+            passwordInput.addEventListener('input', () => {
+                checkPasswordStrength(passwordInput.value);
+                checkPasswordMatch(); // Re-check match if user changes original password
+            });
+        }
+        
+        if(confirmPasswordInput) {
+            confirmPasswordInput.addEventListener('input', checkPasswordMatch);
+        }
+
+        // Check form submission
+        if(signupForm) {
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match. Please correct them before submitting.');
+                    return; // Stop the submission
+                }
+                
+                // If all checks pass:
+                alert('Sign up successful! Please log in.');
+                window.location.href = 'login.html'; // Redirect to login
+            });
+        }
+    };
+    // === END OF NEW FUNCTION ===
+
     const handleCheckout = () => {
         const checkoutBtn = document.getElementById('checkout-btn');
         if (checkoutBtn) {
@@ -467,5 +561,7 @@ const initProductDetailsPage = async () => {
         initWishlistPage();
     } else if (page === 'login.html') {
         initLoginPage();
+    } else if (page === 'signup.html') { // <-- MODIFIED: ADDED THIS
+        initSignupPage();               // <-- MODIFIED: ADDED THIS
     }
 });

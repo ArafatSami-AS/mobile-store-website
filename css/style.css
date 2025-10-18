@@ -1,4 +1,3 @@
-
 :root {
     --primary-color: #007bff; 
     --secondary-color: #2a3a4b; 
@@ -166,6 +165,24 @@ main {
     border-radius: 8px;
     background-color: var(--background-light);
 }
+/* Variant Buttons */
+.variant-btn {
+    border: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    color: #343a40;
+    font-weight: 500;
+}
+.variant-btn:hover {
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+}
+.variant-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
 
 /* --- Cart Page --- */
 .cart-item-card {
@@ -220,7 +237,6 @@ main {
 }
 
 /* --- Footer --- */
-/* --- Footer --- */
 .footer-main {
     background-color: var(--secondary-color);
 }
@@ -250,4 +266,21 @@ main {
     .hero-subtitle {
         font-size: 1rem;
     }
+}
+
+/* --- NEW: Signup Page Enhancements --- */
+.progress {
+    background-color: #e9ecef;
+}
+
+#password-strength-text {
+    font-weight: 500;
+}
+
+#password-match-message.text-success {
+    color: #198754 !important; /* Bootstrap success green */
+}
+
+#password-match-message.text-danger {
+    color: #dc3545 !important; /* Bootstrap danger red */
 }
