@@ -1,7 +1,7 @@
-/* --- General Styles & Variables --- */
+
 :root {
-    --primary-color: #007bff; /* A nice blue for accents */
-    --secondary-color: #2a3a4b; /* Dark blue for footer */
+    --primary-color: #007bff; 
+    --secondary-color: #2a3a4b; 
     --background-light: #f8f9fa;
     --text-dark: #343a40;
     --card-border-color: #dee2e6;
