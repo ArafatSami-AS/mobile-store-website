@@ -172,10 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
         productCountEl.textContent = `Showing ${productsToDisplay.length} products`;
     };
 
-    // PRODUCT DETAILS PAGE LOGIC
-    // js/script.js
+    
 
-// --- PRODUCT DETAILS PAGE LOGIC (REPLACE THE ENTIRE OLD FUNCTION WITH THIS) ---
+   //PRODUCT DETAILS PAGE LOGIC
 const initProductDetailsPage = async () => {
     const products = await fetchProducts();
     const urlParams = new URLSearchParams(window.location.search);
@@ -183,7 +182,7 @@ const initProductDetailsPage = async () => {
     const product = products.find(p => p.id.toString() === productId);
 
     if (product) {
-        // --- NEW: Find all variants with the same name ---
+        //Find all variants with the same name
         const variants = products
             .filter(p => p.name === product.name)
             .sort((a, b) => a.price - b.price); // Sort variants by price
@@ -200,7 +199,7 @@ const initProductDetailsPage = async () => {
                 <li class="breadcrumb-item active" aria-current="page">${product.name}</li>
             </ol>`;
             
-        // --- MODIFIED: HTML structure with IDs for dynamic updates and variant buttons ---
+        // HTML structure with IDs for dynamic updates and variant buttons ---
         container.querySelector('.row').innerHTML = `
             <div class="col-md-5">
                 <img src="${product.image}" class="img-fluid rounded" alt="${product.name}">
@@ -250,7 +249,7 @@ const initProductDetailsPage = async () => {
                 </div>
             </div>`;
             
-        // --- NEW: Event listener for variant buttons ---
+        // Event listener for variant buttons ---
         const variantButtonsContainer = document.getElementById('variant-buttons');
         variantButtonsContainer.addEventListener('click', (e) => {
             const button = e.target.closest('.variant-btn');
@@ -328,8 +327,8 @@ const initProductDetailsPage = async () => {
     };
 
     const updateCartSummary = (subtotal) => {
-        const tax = subtotal * 0.18; // Example 18% tax
-        const shipping = subtotal > 0 ? 50 : 0; // Example shipping fee
+        const tax = subtotal * 0.18;
+        const shipping = subtotal > 0 ? 50 : 0;
         const total = subtotal + tax + shipping;
 
         document.getElementById('summary-subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
