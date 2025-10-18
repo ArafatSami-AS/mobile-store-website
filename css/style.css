@@ -229,6 +229,10 @@ main {
 .footer-main a:hover {
     text-decoration: underline;
 }
+.ft-logo {
+    height: 100px;
+    width: 100px;
+}
 
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
