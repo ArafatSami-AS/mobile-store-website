@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- UNIVERSAL FUNCTIONS (HEADER, SEARCH) ---
+    // (HEADER, SEARCH)
     const updateCounters = () => {
         const cart = getCart();
         const wishlist = getWishlist();
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const product = products.find(p => p.id.toString() === productId);
 
         if (product) {
-            // --- NEW: Find all variants with the same name ---
+            // Find all variants with the same name 
             const variants = products
                 .filter(p => p.name === product.name)
                 .sort((a, b) => a.price - b.price); // Sort variants by price
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li class="breadcrumb-item active" aria-current="page">${product.name}</li>
                 </ol>`;
                 
-            // --- MODIFIED: HTML structure with IDs for dynamic updates and variant buttons ---
+            // HTML structure with IDs for dynamic updates and variant buttons ---
             container.querySelector('.row').innerHTML = `
                 <div class="col-md-5">
                     <img src="${product.image}" class="img-fluid rounded" alt="${product.name}">
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>`;
                 
-            // --- NEW: Event listener for variant buttons ---
+            // Event listener for variant buttons ---
             const variantButtonsContainer = document.getElementById('variant-buttons');
             variantButtonsContainer.addEventListener('click', (e) => {
                 const button = e.target.closest('.variant-btn');
@@ -269,9 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('wishlist-btn-main').dataset.productId = newProductId;
             });
                 
-            // Related Products logic (remains the same)
+            // Related Products logic
             const relatedProductsContainer = document.getElementById('related-products-container');
-            const relatedProducts = products.filter(p => p.brand === product.brand && p.id !== product.id).slice(0, 4);
+            const relatedProducts = products.filter(p => p.brand === product.brand && p.id !== product.id).slice(0, 10);
             relatedProductsContainer.innerHTML = relatedProducts.map(p => createProductCard(p)).join('');
         }
     };
@@ -326,8 +326,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateCartSummary = (subtotal) => {
-        const tax = subtotal * 0.18; // Example 18% tax
-        const shipping = subtotal > 0 ? 50 : 0; // Example shipping fee
+        const tax = subtotal * 0.18; 
+        const shipping = subtotal > 0 ? 50 : 0; 
         const total = subtotal + tax + shipping;
 
         document.getElementById('summary-subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
@@ -538,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let cart = getCart();
             cart = cart.filter(i => i.id !== productId);
             saveCart(cart);
-            initCartPage(); // Re-render the cart
+            initCartPage();
         }
     });
 
@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initWishlistPage();
     } else if (page === 'login.html') {
         initLoginPage();
-    } else if (page === 'signup.html') { // <-- MODIFIED: ADDED THIS
-        initSignupPage();               // <-- MODIFIED: ADDED THIS
+    } else if (page === 'signup.html') {
+        initSignupPage();              
     }
 });

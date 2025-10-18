@@ -251,6 +251,21 @@ main {
     width: 100px;
     margin-bottom: 1rem; /* Added this for better spacing */
 }
+.progress {
+    background-color: #e9ecef;
+}
+
+#password-strength-text {
+    font-weight: 500;
+}
+
+#password-match-message.text-success {
+    color: #198754 !important; /* Bootstrap success green */
+}
+
+#password-match-message.text-danger {
+    color: #dc3545 !important; /* Bootstrap danger red */
+}
 
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
@@ -268,19 +283,4 @@ main {
     }
 }
 
-/* --- NEW: Signup Page Enhancements --- */
-.progress {
-    background-color: #e9ecef;
-}
 
-#password-strength-text {
-    font-weight: 500;
-}
-
-#password-match-message.text-success {
-    color: #198754 !important; /* Bootstrap success green */
-}
-
-#password-match-message.text-danger {
-    color: #dc3545 !important; /* Bootstrap danger red */
-}
