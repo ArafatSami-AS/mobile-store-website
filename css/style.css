@@ -220,6 +220,7 @@ main {
 }
 
 /* --- Footer --- */
+/* --- Footer --- */
 .footer-main {
     background-color: var(--secondary-color);
 }
@@ -232,6 +233,7 @@ main {
 .ft-logo {
     height: 100px;
     width: 100px;
+    margin-bottom: 1rem; /* Added this for better spacing */
 }
 
 /* --- Responsive Design --- */
