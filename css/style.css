@@ -119,16 +119,17 @@ main {
     max-width: 500px;
     margin: 1rem 0;
 }
-/* --- Fix Hero Slider Button Overlap --- */
-#hero-carousel .carousel-item .hero-slide-content {
-    position: relative; /* Needed for z-index */
-    z-index: 2;         /* Bring content above default */
-}
+
 
 /* Make sure controls are above the content */
 #hero-carousel .carousel-control-prev,
 #hero-carousel .carousel-control-next {
     z-index: 10; /* Give controls a higher z-index than the content */
+}
+/* --- Fix Hero Slider Button Overlap --- */
+#hero-carousel .carousel-item .hero-slide-content {
+    position: relative; /* Needed for z-index */
+    z-index: 2;         /* Bring content above default */
 }
 
 
