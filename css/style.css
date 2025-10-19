@@ -80,6 +80,47 @@ main {
     max-width: 600px;
     margin: 1rem auto;
 }
+/* --- ADD ALL OF THIS TO THE END OF style.css --- */
+
+/* --- Hero Carousel Styles --- */
+#hero-carousel {
+    min-height: 70vh;
+    background: linear-gradient(110deg, #3a7bd5 0%, #a044ff 100%);
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-item {
+    /* min-height: 70vh; -- This can cause issues, use padding on parent */
+}
+
+.hero-slide-content {
+    min-height: 60vh; /* Give space for content */
+    display: flex;
+    align-items: center;
+}
+
+.hero-slide-image {
+    max-height: 500px;
+    width: 100%;
+    object-fit: contain;
+    /* Adding a subtle drop shadow like the design */
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+}
+
+#hero-carousel .hero-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+#hero-carousel .hero-description {
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin: 1rem 0;
+}
+
+
 
 /* --- Category Section --- */
 .brand-link {
@@ -181,6 +222,30 @@ main {
     color: white;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+/* --- Reviews Section Styles --- */
+.reviews-section .stars-lg {
+    font-size: 2rem;
+}
+
+.rating-breakdown .progress {
+    height: 10px;
+    background-color: #e9ecef;
+}
+
+.rating-breakdown .progress-bar {
+    background-color: #ffc107; /* Bootstrap Warning/Yellow */
+}
+
+.rating-breakdown span:first-child {
+    min-width: 110px; /* Aligns the progress bars */
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.user-review img {
+    width: 50px;
+    height: 50px;
 }
 
 

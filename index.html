@@ -60,102 +60,117 @@
         </nav>
     </header>
 
-
-
-    <section class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Browse By Category</h2>
-            <div class="d-flex justify-content-center flex-wrap gap-3">
-                <a href="products.html?brand=Apple" class="brand-link"><img
-                        src="https://img.icons8.com/ios-filled/50/000000/mac-os.png" alt="Apple" /> Apple</a>
-                <a href="products.html?brand=Samsung" class="brand-link"><img
-                        src="https://img.icons8.com/color/48/000000/samsung.png" alt="Samsung" /> Samsung</a>
-                <a href="products.html?brand=OnePlus" class="brand-link"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/5/52/Logo_entreprise_OnePlus.png?20180206182312"
-                        alt="OnePlus" /> OnePlus</a>
-                <a href="products.html?brand=Vivo" class="brand-link"><img
-                        src="https://www.logo.wine/a/logo/Vivo_(technology_company)/Vivo_(technology_company)-Logo.wine.svg"
-                        alt="Vivo" /> Vivo</a>
-                <a href="products.html?brand=Realme" class="brand-link"><img
-                        src="https://brandlogos.net/wp-content/uploads/2021/05/realme-logo-768x768.png" alt="Realme" />
-                    Realme</a>
-                <a href="products.html?brand=Oppo" class="brand-link"><img
-                        src="https://brandlogos.net/wp-content/uploads/2022/08/oppo-logo_brandlogos.net_x21dk.png"
-                        alt="Oppo" /> Oppo</a>
-            </div>
+    <section id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators" id="hero-carousel-indicators">
         </div>
-    </section>
-
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-4">New Arrivals</h2>
-            <div id="new-arrivals-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-            </div>
+        <div class="carousel-inner" id="hero-carousel-inner">
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </section>
+    <main>
+        <section class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Browse By Category</h2>
+                <div class="d-flex justify-content-center flex-wrap gap-3">
+                    <a href="products.html?brand=Apple" class="brand-link"><img
+                            src="https://img.icons8.com/ios-filled/50/000000/mac-os.png" alt="Apple" /> Apple</a>
+                    <a href="products.html?brand=Samsung" class="brand-link"><img
+                            src="https://img.icons8.com/color/48/000000/samsung.png" alt="Samsung" /> Samsung</a>
+                    <a href="products.html?brand=OnePlus" class="brand-link"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/52/Logo_entreprise_OnePlus.png?20180206182312"
+                            alt="OnePlus" /> OnePlus</a>
+                    <a href="products.html?brand=Vivo" class="brand-link"><img
+                            src="https://www.logo.wine/a/logo/Vivo_(technology_company)/Vivo_(technology_company)-Logo.wine.svg"
+                            alt="Vivo" /> Vivo</a>
+                    <a href="products.html?brand=Realme" class="brand-link"><img
+                            src="https://brandlogos.net/wp-content/uploads/2021/05/realme-logo-768x768.png"
+                            alt="Realme" />
+                        Realme</a>
+                    <a href="products.html?brand=Oppo" class="brand-link"><img
+                            src="https://brandlogos.net/wp-content/uploads/2022/08/oppo-logo_brandlogos.net_x21dk.png"
+                            alt="Oppo" /> Oppo</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-4">New Arrivals</h2>
+                <div id="new-arrivals-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                </div>
+            </div>
+        </section>
     </main>
 
-<footer class="footer-main text-white pt-5 pb-4">
-    <div class="container text-center text-md-left">
-        <div class="row text-center text-md-left">
+    <footer class="footer-main text-white pt-5 pb-4">
+        <div class="container text-center text-md-left">
+            <div class="row text-center text-md-left">
 
-            <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
-                <a class="footer-brand" href="index.html">
-                    <img src="assets/sec_logo.png" alt="PAASD Mobiles Logo" class="logo ft-logo">
-                </a>
-                <p>We are a multinational retailer always committed to providing the best products and services to
-                    our customers worldwide.</p>
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+                    <a class="footer-brand" href="index.html">
+                        <img src="assets/sec_logo.png" alt="PAASD Mobiles Logo" class="logo ft-logo">
+                    </a>
+                    <p>We are a multinational retailer always committed to providing the best products and services to
+                        our customers worldwide.</p>
+                </div>
+
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-info">Useful Links</h5>
+                    <p><a href="login.html" class="text-white">Your Account</a></p>
+                    <p><a href="#" class="text-white">Become an Affiliate</a></p>
+                    <p><a href="#" class="text-white">Shipping Rates</a></p>
+                    <p><a href="#" class="text-white">Help</a></p>
+                </div>
+
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-info">Contact</h5>
+                    <p><i class="fas fa-home mr-3"></i> Brainware University,Barasat,Kolkata-70124</p>
+                    <p><i class="fas fa-envelope mr-3"></i> info@paasdmobiles.com</p>
+                    <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                    <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                </div>
+
             </div>
+            <hr class="mb-4">
 
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Useful Links</h5>
-                <p><a href="login.html" class="text-white">Your Account</a></p>
-                <p><a href="#" class="text-white">Become an Affiliate</a></p>
-                <p><a href="#" class="text-white">Shipping Rates</a></p>
-                <p><a href="#" class="text-white">Help</a></p>
-            </div>
-
-            <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
-                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Contact</h5>
-                <p><i class="fas fa-home mr-3"></i> Brainware University,Barasat,Kolkata-70124</p>
-                <p><i class="fas fa-envelope mr-3"></i> info@paasdmobiles.com</p>
-                <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-            </div>
-
-        </div> <hr class="mb-4">
-
-        <div class="row align-items-center">
-            <div class="col-md-7 col-lg-8">
-                <p>Copyright ©2025 All rights reserved by:
-                    <a href="#" style="text-decoration: none;"><strong class="text-info">PAASD Mobiles</strong></a>
-                </p>
-            </div>
-            <div class="col-md-5 col-lg-4">
-                <div class="text-center text-md-right">
-                    <ul class="list-unstyled list-inline">
-                        <li class="list-inline-item">
-                            <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
-                                    class="fab fa-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
-                                    class="fab fa-twitter"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
-                                    class="fab fa-google-plus"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
-                                    class="fab fa-linkedin-in"></i></a>
-                        </li>
-                    </ul>
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p>Copyright ©2025 All rights reserved by:
+                        <a href="#" style="text-decoration: none;"><strong class="text-info">PAASD Mobiles</strong></a>
+                    </p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="text-center text-md-right">
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+                                        class="fab fa-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+                                        class="fab fa-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+                                        class="fab fa-google-plus"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>

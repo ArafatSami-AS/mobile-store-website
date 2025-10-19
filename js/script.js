@@ -69,14 +69,65 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- PAGE-SPECIFIC LOGIC ---
 
     // HOMEPAGE LOGIC
-    const initHomePage = async () => {
-        const products = await fetchProducts();
-        const newArrivalsContainer = document.getElementById('new-arrivals-container');
-        if (newArrivalsContainer) {
-            const newArrivals = products.slice(0, 8); // Show first 8 as new arrivals
-            newArrivalsContainer.innerHTML = newArrivals.map(p => createProductCard(p)).join('');
-        }
-    };
+const initHomePage = async () => {
+    const products = await fetchProducts();
+
+    // Load the new hero slider
+    loadHeroSlider(products);
+
+    // Load new arrivals
+    const newArrivalsContainer = document.getElementById('new-arrivals-container');
+    if (newArrivalsContainer) {
+        const newArrivals = products.slice(0, 8); // Show first 8 as new arrivals
+        newArrivalsContainer.innerHTML = newArrivals.map(p => createProductCard(p)).join('');
+    }
+};
+// === NEW FUNCTION: To build the hero slider ===
+const loadHeroSlider = (products) => {
+    const brands = ['Apple', 'Samsung', 'OnePlus', 'Vivo', 'Realme', 'Oppo'];
+    const indicatorsContainer = document.getElementById('hero-carousel-indicators');
+    const innerContainer = document.getElementById('hero-carousel-inner');
+
+    if (!innerContainer) return; // Exit if not on the homepage
+
+    let indicatorHTML = '';
+    let innerHTML = '';
+
+    brands.forEach((brand, index) => {
+        // Find the first product for this brand
+        const product = products.find(p => p.brand === brand);
+        if (!product) return; // Skip if no product for this brand
+
+        const isActive = index === 0 ? 'active' : '';
+
+        // Add indicator button
+        indicatorHTML += `
+            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="${index}" class="${isActive}" aria-current="${isActive ? 'true' : 'false'}" aria-label="Slide ${index + 1}"></button>
+        `;
+
+        // Add carousel item slide
+        innerHTML += `
+            <div class="carousel-item ${isActive}">
+                <div class="hero-slide-content container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 text-white text-center text-lg-start">
+                            <h1 class="hero-title">${product.name}</h1>
+                            <p class="hero-description d-none d-md-block">Experience the best from ${product.brand} with the new ${product.processor} chip.</p>
+                            <a href="product-details.html?id=${product.id}" class="btn btn-light btn-lg">Shop Now</a>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <img src="${product.image}" class="hero-slide-image" alt="${product.name}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    indicatorsContainer.innerHTML = indicatorHTML;
+    innerContainer.innerHTML = innerHTML;
+};
+// === END OF NEW FUNCTION ===
 
     // PRODUCTS PAGE LOGIC
     const initProductsPage = async () => {
