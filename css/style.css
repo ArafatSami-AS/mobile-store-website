@@ -92,7 +92,7 @@ main {
 }
 
 .carousel-item {
-    /* min-height: 70vh; -- This can cause issues, use padding on parent */
+    min-height: 70vh; /*-- This can cause issues, use padding on parent */
 }
 
 .hero-slide-content {
