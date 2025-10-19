@@ -119,22 +119,17 @@ main {
     max-width: 500px;
     margin: 1rem 0;
 }
-/* --- ADD THIS TO THE END OF style.css --- */
-
 /* --- Fix Hero Slider Button Overlap --- */
 #hero-carousel .carousel-item .hero-slide-content {
-    position: relative; /* Needed for z-index to work */
-    z-index: 2;         /* Bring content above default controls (usually z-index 1) */
+    position: relative; /* Needed for z-index */
+    z-index: 2;         /* Bring content above default */
 }
 
-/* Optional: Slightly increase control z-index if needed */
-/* If the above doesn't work, uncomment the lines below */
-/*
+/* Make sure controls are above the content */
 #hero-carousel .carousel-control-prev,
 #hero-carousel .carousel-control-next {
-    z-index: 10;
+    z-index: 10; /* Give controls a higher z-index than the content */
 }
-*/
 
 
 
